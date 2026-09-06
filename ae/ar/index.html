@@ -1,29 +1,29 @@
 <!DOCTYPE html>
-<html lang="en" dir="ltr">
+<html lang="ar-AE" dir="rtl">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>myDHL+ | DHL Express</title>
   <link rel="icon" href="https://mydhl.express.dhl/favicon.ico" />
 
-  <!-- ── DHL icon font ── -->
   <style>
+    /* ── Delivery font (correct DHL CDN URL) ── */
+    @font-face {
+      font-family: "Delivery";
+      src: url("https://www.dhl.com/etc/clientlibs/dhl/clientlib-all/assets/fonts/default-4bcce82160b8c6f178f0.woff2") format("woff2");
+      font-weight: 400; font-style: normal; font-display: swap;
+    }
+    /* ── DHL icon font ── */
     @font-face {
       font-family: "dhlicon-v2";
       src: url("https://mydhl.express.dhl/etc/clientlibs/dhl/global/public/fonts/dhl-icon.woff2") format("woff2"),
            url("https://mydhl.express.dhl/etc/clientlibs/dhl/global/public/fonts/dhl-icon.woff") format("woff");
       font-weight: normal; font-style: normal; font-display: block;
     }
-    @font-face {
-      font-family: "dhlicon";
-      src: url("https://mydhl.express.dhl/etc/clientlibs/dhl/global/public/fonts/dhl.woff2") format("woff2"),
-           url("https://mydhl.express.dhl/etc/clientlibs/dhl/global/public/fonts/dhl.woff") format("woff");
-      font-weight: normal; font-style: normal; font-display: block;
-    }
 
     /* ── Reset & base ── */
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    html, body { height: 100%; font-family: Arial, Helvetica, sans-serif; font-size: 14px; color: #333; background: #f4f4f4; }
+    html, body { height: 100%; font-family: "Delivery", Arial, Helvetica, sans-serif; font-size: 14px; color: #333; background: #f4f4f4; }
     a { text-decoration: none; color: inherit; }
     button { cursor: pointer; font-family: inherit; }
 
@@ -38,7 +38,6 @@
     .header { background: #fff; border-bottom: 1px solid #e0e0e0; box-shadow: 0 2px 4px rgba(0,0,0,.08); }
     .header__inner { max-width: 1280px; margin: 0 auto; padding: 0 24px; height: 64px; display: flex; align-items: center; justify-content: space-between; }
     .header__logo { display: flex; align-items: center; }
-    .header__logo img { height: 36px; }
     .header__right { display: flex; align-items: center; gap: 20px; }
     .header__search { display: flex; align-items: center; gap: 8px; padding: 6px 14px; border: 1px solid #ccc; border-radius: 4px; font-size: 13px; color: #666; width: 220px; }
     .header__search input { border: none; outline: none; flex: 1; font-size: 13px; color: #333; background: transparent; }
@@ -56,8 +55,6 @@
     .top-nav__link:hover { color: #D40511; border-bottom-color: #D40511; }
     .top-nav__link .caret { font-size: 10px; }
     .top-nav__item--active .top-nav__link { color: #D40511; border-bottom-color: #D40511; }
-
-    /* ── Dropdown ── */
     .dropdown { display: none; position: absolute; top: 100%; left: 0; background: #fff; border: 1px solid #e0e0e0; border-top: 3px solid #D40511; box-shadow: 0 4px 12px rgba(0,0,0,.12); min-width: 200px; z-index: 100; }
     .top-nav__item:hover .dropdown { display: block; }
     .dropdown__link { display: block; padding: 10px 18px; font-size: 13px; color: #333; border-bottom: 1px solid #f0f0f0; }
@@ -69,18 +66,14 @@
     .hero__inner { max-width: 1280px; margin: 0 auto; }
     .hero__headline { font-size: 26px; font-weight: 700; margin-bottom: 6px; }
     .hero__sub { font-size: 14px; opacity: .85; margin-bottom: 24px; }
-
-    /* ── Dashboard tabs ── */
     .dash-tabs { display: flex; gap: 0; border-bottom: none; }
     .dash-tab { padding: 12px 22px; font-size: 13px; font-weight: 600; color: rgba(255,255,255,.75); border-radius: 6px 6px 0 0; border: none; background: rgba(255,255,255,.1); cursor: pointer; white-space: nowrap; transition: all .15s; }
     .dash-tab:hover { background: rgba(255,255,255,.2); color: #fff; }
     .dash-tab.is-active { background: #fff; color: #333; }
 
-    /* ── Dashboard panel (white card below tabs) ── */
+    /* ── Dashboard panel ── */
     .dash-panel { background: #fff; box-shadow: 0 4px 20px rgba(0,0,0,.12); }
     .dash-panel__inner { max-width: 1280px; margin: 0 auto; padding: 32px 24px; }
-
-    /* ── Get a Quote form ── */
     .quote-form { display: flex; align-items: flex-end; gap: 16px; flex-wrap: wrap; }
     .quote-form__group { display: flex; flex-direction: column; gap: 6px; flex: 1; min-width: 180px; }
     .quote-form__label { font-size: 12px; font-weight: 600; color: #666; text-transform: uppercase; letter-spacing: .5px; }
@@ -89,7 +82,6 @@
     .quote-form__input { width: 100%; padding: 12px 16px 12px 42px; border: 1px solid #ccc; border-radius: 4px; font-size: 14px; color: #333; outline: none; transition: border-color .15s; }
     .quote-form__input:focus { border-color: #0064A7; box-shadow: 0 0 0 3px rgba(0,100,167,.12); }
     .quote-form__arrow { display: flex; align-items: center; padding-bottom: 2px; }
-    .quote-form__arrow svg { color: #FFCC00; }
     .quote-form__btn { padding: 13px 32px; background: #D40511; color: #fff; border: none; border-radius: 4px; font-size: 14px; font-weight: 700; white-space: nowrap; transition: background .15s; }
     .quote-form__btn:hover { background: #b8040f; }
     .quote-form__hint { font-size: 12px; color: #888; margin-top: 12px; }
@@ -102,7 +94,7 @@
     .qa-item a { color: #0064A7; font-weight: 600; }
     .qa-item a:hover { text-decoration: underline; }
 
-    /* ── Recent shipments placeholder ── */
+    /* ── Content section ── */
     .section { max-width: 1280px; margin: 32px auto; padding: 0 24px; }
     .section__title { font-size: 18px; font-weight: 700; color: #333; margin-bottom: 16px; border-left: 4px solid #FFCC00; padding-left: 12px; }
     .placeholder-card { background: #fff; border: 1px solid #e0e0e0; border-radius: 6px; padding: 40px; text-align: center; color: #aaa; font-size: 14px; }
@@ -121,35 +113,28 @@
     /* ── Language toggle ── */
     #lang-toggle { position: fixed; top: 48px; right: 20px; padding: 7px 14px; background: #0064A7; color: #fff; border: none; border-radius: 4px; cursor: pointer; font-size: 12px; z-index: 9997; font-weight: 600; }
 
-    /* ═══════════════════════════════════════════════════════════
-       COGNIGY WEBCHAT OVERRIDES
-    ═══════════════════════════════════════════════════════════ */
+    /* ════════════════════════════════════════════════
+       COGNIGY WEBCHAT OVERRIDES (full — from 4thSep)
+    ════════════════════════════════════════════════ */
+
+    @font-face { font-family: "Delivery"; src: url("https://www.dhl.com/etc/clientlibs/dhl/clientlib-all/assets/fonts/default-4bcce82160b8c6f178f0.woff2") format("woff2"); font-weight: 400; font-style: normal; font-display: swap; }
     [data-cognigy-webchat-root] [data-cognigy-webchat],
     [data-cognigy-webchat-root] [data-cognigy-webchat] *,
     [data-cognigy-webchat-root] [data-cognigy-webchat].webchat .webchat-header-bar,
     [data-cognigy-webchat-root] [data-cognigy-webchat].webchat .webchat-header-title,
-    [data-cognigy-webchat-root] [data-cognigy-webchat].webchat .webchat-header-logo-name-container * {
-      font-family: Arial, Helvetica, sans-serif !important;
-    }
+    [data-cognigy-webchat-root] [data-cognigy-webchat].webchat .webchat-header-logo-name-container * { font-family: "Delivery", Arial, sans-serif !important; }
     [data-cognigy-webchat-root] [data-cognigy-webchat].webchat { box-shadow: 0 8px 32px rgba(0,0,0,.16) !important; }
-    [data-cognigy-webchat-root] [data-cognigy-webchat] .chat-bubble a { font-weight: 700 !important; text-decoration: underline !important; }
+    [data-cognigy-webchat-root] [data-cognigy-webchat] .chat-bubble a { font-family: "Delivery", Arial, sans-serif !important; font-weight: 700 !important; text-decoration: underline !important; }
     [data-cognigy-webchat-root] [data-cognigy-webchat] .webchat-buttons-template-button *,
     [data-cognigy-webchat-root] [data-cognigy-webchat] .webchat-quick-reply-template-button *,
-    [data-cognigy-webchat-root] [data-cognigy-webchat] .webchat-chip-conversation-ended * { font-weight: 700 !important; }
+    [data-cognigy-webchat-root] [data-cognigy-webchat] .webchat-chip-conversation-ended * { font-family: "Delivery", Arial, sans-serif !important; font-weight: 700 !important; }
     [data-cognigy-webchat-root] [data-cognigy-webchat] .webchat-log-ai-agent-notice-text { display: none; }
-    [data-cognigy-webchat-root] [data-cognigy-webchat].webchat .webchat-message-row.bot .chat-bubble {
-      background-color: #FFFFFF; border: .5px solid rgba(0,0,0,.29); border-radius: 0 12px 12px 12px;
-      width: 340px !important; max-width: 340px !important; font-size: 16px !important; font-weight: 400 !important; color: #000 !important;
-    }
+    [data-cognigy-webchat-root] [data-cognigy-webchat].webchat .webchat-message-row.bot .chat-bubble { background-color: #FFFFFF; border: 0.5px solid rgba(0,0,0,.29); border-radius: 0 12px 12px 12px; width: 340px !important; max-width: 340px !important; font-size: 16px !important; font-weight: 400 !important; color: #000 !important; }
     [data-cognigy-webchat-root] [data-cognigy-webchat].webchat .webchat-header-close-button { display: none; }
-    [data-cognigy-webchat-root] [data-cognigy-webchat].webchat .webchat-scroll-to-bottom-button { background-color: #D5E9F7; border: .5px solid #0064A7; color: #00365A; }
+    [data-cognigy-webchat-root] [data-cognigy-webchat].webchat .webchat-scroll-to-bottom-button { background-color: #D5E9F7; border: 0.5px solid #0064A7; color: #00365A; }
     [data-cognigy-webchat-root] [data-cognigy-webchat] .webchat-privacy-policy-link { color: #D40511; }
-    [data-cognigy-webchat-root] [data-cognigy-webchat].webchat .webchat-message-row.user .chat-bubble {
-      background-color: #F5F5F5; border: .5px solid rgba(0,0,0,.29); color: #000;
-      border-radius: 12px 0 12px 12px; padding: 12px 24px; max-width: 340px;
-      font-size: 16px !important; font-weight: 400 !important;
-    }
-    [data-cognigy-webchat-root] [data-cognigy-webchat] .webchat-quick-reply-template-root .chat-bubble { background-color: #FFFFFF; border: .5px solid rgba(0,0,0,.29); }
+    [data-cognigy-webchat-root] [data-cognigy-webchat].webchat .webchat-message-row.user .chat-bubble { background-color: #F5F5F5; border: 0.5px solid rgba(0,0,0,.29); color: #000; border-radius: 12px 0 12px 12px; padding: 12px 24px; max-width: 340px; font-size: 16px !important; font-weight: 400 !important; }
+    [data-cognigy-webchat-root] [data-cognigy-webchat] .webchat-quick-reply-template-root .chat-bubble { background-color: #FFFFFF; border: 0.5px solid rgba(0,0,0,.29); }
     [data-cognigy-webchat-root] [data-cognigy-webchat].webchat .webchat-header-bar { background-color: #FFCC00; justify-content: space-between; }
     [data-cognigy-webchat-root] [data-cognigy-webchat].webchat .webchat-header-logo-name-container { justify-content: start; margin-inline: 0; }
     [data-cognigy-webchat-root] [data-cognigy-webchat].webchat .webchat-header-title { color: #000; position: static; text-align: left; font-size: 18px !important; transform: none; flex: 1; }
@@ -162,106 +147,109 @@
     [data-cognigy-webchat-root] [data-cognigy-webchat].webchat .webchat-header-minimize-button svg,
     [data-cognigy-webchat-root] [data-cognigy-webchat].webchat .webchat-header-options-button svg { width: 24px !important; height: 24px !important; }
     [data-cognigy-webchat-root] [data-header-menu-button="true"] svg { display: none !important; }
-    [data-cognigy-webchat-root] [data-header-menu-button="true"]::before {
-      content: ""; display: block; width: 24px; height: 24px;
-      background-image: url("data:image/svg+xml,%3Csvg width='24' height='24' viewBox='0 0 24 24' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M13.5 3L13.9635 5.31775L15.3366 5.88645L17.3033 4.5754L19.4246 6.69665L18.1136 8.66335L18.6822 10.0365L21 10.5V13.5L18.6822 13.9635L18.1136 15.3366L19.4246 17.3034L17.3033 19.4246L15.3366 18.1136L13.9635 18.6822L13.5 21H10.5L10.0365 18.6822L8.66335 18.1136L6.6967 19.4246L4.5754 17.3034L5.88645 15.3366L5.31775 13.9635L3 13.5V10.5L5.31775 10.0365L5.88645 8.66335L4.5754 6.69665L6.6967 4.5754L8.66335 5.88645L10.0365 5.31775L10.5 3H13.5ZM13.5309 8.3046C12.0361 7.68548 10.3157 8.02769 9.17169 9.17169C8.02769 10.3157 7.68548 12.0361 8.3046 13.5309C8.92372 15.0256 10.3823 16.0001 12.0001 16.0001C14.2092 16.0001 16.0001 14.2092 16.0001 12.0001C16.0001 10.3823 15.0256 8.92372 13.5309 8.3046Z' fill='black'/%3E%3C%2Fsvg%3E");
-      background-size: contain; background-repeat: no-repeat; background-position: center;
-    }
+    [data-cognigy-webchat-root] [data-header-menu-button="true"]::before { content: ""; display: block; width: 24px; height: 24px; background-image: url("data:image/svg+xml,%3Csvg width='24' height='24' viewBox='0 0 24 24' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M13.5 3L13.9635 5.31775L15.3366 5.88645L17.3033 4.5754L19.4246 6.69665L18.1136 8.66335L18.6822 10.0365L21 10.5V13.5L18.6822 13.9635L18.1136 15.3366L19.4246 17.3034L17.3033 19.4246L15.3366 18.1136L13.9635 18.6822L13.5 21H10.5L10.0365 18.6822L8.66335 18.1136L6.6967 19.4246L4.5754 17.3034L5.88645 15.3366L5.31775 13.9635L3 13.5V10.5L5.31775 10.0365L5.88645 8.66335L4.5754 6.69665L6.6967 4.5754L8.66335 5.88645L10.0365 5.31775L10.5 3H13.5ZM13.5309 8.3046C12.0361 7.68548 10.3157 8.02769 9.17169 9.17169C8.02769 10.3157 7.68548 12.0361 8.3046 13.5309C8.92372 15.0256 10.3823 16.0001 12.0001 16.0001C14.2092 16.0001 16.0001 14.2092 16.0001 12.0001C16.0001 10.3823 15.0256 8.92372 13.5309 8.3046Z' fill='black'/%3E%3C%2Fsvg%3E"); background-size: contain; background-repeat: no-repeat; background-position: center; }
     [data-cognigy-webchat-root] [data-cognigy-webchat] .webchat-quick-reply-template-replies-container,
-    [data-cognigy-webchat-root] [data-cognigy-webchat] .webchat-buttons-template-replies-container {
-      display: flex !important; flex-direction: row !important; flex-wrap: wrap !important;
-      gap: 8px !important; width: 340px !important; max-width: 340px !important;
-    }
-    [data-cognigy-webchat-root] [data-cognigy-webchat] .webchat-quick-reply-template-replies-container .webchat-quick-reply-template-button { background-color: #D5E9F7; border: .5px solid #0064A7; color: #00365A; }
-    [data-cognigy-webchat-root] [data-cognigy-webchat] .webchat-buttons-template-root .webchat-buttons-template-button { background-color: #D5E9F7; border: .5px solid #0064A7; color: #00365A; }
-    [data-cognigy-webchat-root] [data-cognigy-webchat] .webchat-input-persistent-menu-item-container .webchat-input-persistent-menu-item { background-color: #D5E9F7; border: .5px solid #0064A7; color: #00365A; }
+    [data-cognigy-webchat-root] [data-cognigy-webchat] .webchat-buttons-template-replies-container { display: flex !important; flex-direction: row !important; flex-wrap: wrap !important; gap: 8px !important; width: 340px !important; max-width: 340px !important; }
+    [data-cognigy-webchat-root] [data-cognigy-webchat] .webchat-quick-reply-template-replies-container .webchat-quick-reply-template-button { background-color: #D5E9F7; border: 0.5px solid #0064A7; color: #00365A; }
+    [data-cognigy-webchat-root] [data-cognigy-webchat] .webchat-buttons-template-root .webchat-buttons-template-button { background-color: #D5E9F7; border: 0.5px solid #0064A7; color: #00365A; }
+    [data-cognigy-webchat-root] [data-cognigy-webchat] .webchat-input-persistent-menu-item-container .webchat-input-persistent-menu-item { background-color: #D5E9F7; border: 0.5px solid #0064A7; color: #00365A; }
     [data-cognigy-webchat-root] [data-cognigy-webchat].webchat .webchat-message-row.bot .message-header,
     [data-cognigy-webchat-root] [data-cognigy-webchat].webchat .webchat-message-row.user .message-header { display: none; }
     [data-cognigy-webchat-root] [data-cognigy-webchat] .webchat-avatar { display: none; }
     [data-cognigy-webchat-root] .webchat-toggle-button { border-radius: 16px !important; }
     [data-cognigy-webchat-root] .webchat-toggle-button svg { display: none !important; }
-    [data-cognigy-webchat-root] .webchat-toggle-button::before {
-      content: ""; display: block; width: 24px; height: 24px;
-      background-image: url("data:image/svg+xml,%3Csvg width='24' height='24' viewBox='0 0 24 24' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M11 4.7321C10.4024 4.3861 10 3.7397 10 3C10 1.8962 10.8962 1 12 1C13.1038 1 14 1.8962 14 3C14 3.7397 13.5976 4.3861 13 4.7321V6H19C19.552 6 20 6.448 20 7V10C20.552 10 21 10.448 21 11V14C21 14.552 20.552 15 20 15V18C20 18.552 19.552 19 19 19H18V22L15 19H5C4.448 19 4 18.552 4 18V15C3.448 15 3 14.552 3 14V11C3 10.448 3.448 10 4 10V7C4 6.448 4.448 6 5 6H11V4.7321ZM6 14.494V10.506C6 9.674 6.674 9 7.506 9H16.494C17.326 9 18 9.674 18 10.506V14.494C18 15.326 17.326 16 16.494 16H7.506C6.674 16 6 15.326 6 14.494ZM11 12.5C11 13.328 10.328 14 9.5 14C8.672 14 8 13.328 8 12.5C8 11.672 8.672 11 9.5 11C10.328 11 11 11.672 11 12.5ZM16 12.5C16 13.328 15.328 14 14.5 14C13.672 14 13 13.328 13 12.5C13 11.672 13.672 11 14.5 11C15.328 11 16 11.672 16 12.5Z' fill='white'/%3E%3C%2Fsvg%3E");
-      background-size: contain; background-repeat: no-repeat; background-position: center;
-    }
-    [data-cognigy-webchat-root] [data-cognigy-webchat].webchat .webchat-input { background-color: #fff !important; padding: 12px 16px !important; border-top: none !important; display: flex !important; align-items: stretch !important; }
+    [data-cognigy-webchat-root] .webchat-toggle-button::before { content: ""; display: block; width: 24px; height: 24px; background-image: url("data:image/svg+xml,%3Csvg width='24' height='24' viewBox='0 0 24 24' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M11 4.7321C10.4024 4.3861 10 3.7397 10 3C10 1.8962 10.8962 1 12 1C13.1038 1 14 1.8962 14 3C14 3.7397 13.5976 4.3861 13 4.7321V6H19C19.552 6 20 6.448 20 7V10C20.552 10 21 10.448 21 11V14C21 14.552 20.552 15 20 15V18C20 18.552 19.552 19 19 19H18V22L15 19H5C4.448 19 4 18.552 4 18V15C3.448 15 3 14.552 3 14V11C3 10.448 3.448 10 4 10V7C4 6.448 4.448 6 5 6H11V4.7321ZM6 14.494V10.506C6 9.674 6.674 9 7.506 9H16.494C17.326 9 18 9.674 18 10.506V14.494C18 15.326 17.326 16 16.494 16H7.506C6.674 16 6 15.326 6 14.494ZM11 12.5C11 13.328 10.328 14 9.5 14C8.672 14 8 13.328 8 12.5C8 11.672 8.672 11 9.5 11C10.328 11 11 11.672 11 12.5ZM16 12.5C16 13.328 15.328 14 14.5 14C13.672 14 13 13.328 13 12.5C13 11.672 13.672 11 14.5 11C15.328 11 16 11.672 16 12.5Z' fill='white'/%3E%3C%2Fsvg%3E"); background-size: contain; background-repeat: no-repeat; background-position: center; }
+    [data-cognigy-webchat-root] [data-cognigy-webchat].webchat .webchat-input { background-color: #FFFFFF !important; padding: 12px 16px !important; border-top: none !important; display: flex !important; align-items: stretch !important; }
     [data-cognigy-webchat-root] [data-cognigy-webchat] .webchat-input-menu-form { display: flex !important; align-items: stretch !important; flex: 1 !important; gap: 0 !important; }
-    [data-cognigy-webchat-root] [data-cognigy-webchat] .webchat-input-message-container {
-      background-color: #fff !important; border-radius: 16px 0 0 16px !important;
-      border-top: 1px solid #D1D1D1 !important; border-left: 1px solid #D1D1D1 !important;
-      border-bottom: 1px solid #D1D1D1 !important; border-right: none !important;
-      padding: 0 16px !important; flex: 1 !important; min-height: 48px !important; max-height: 120px !important;
-      display: flex !important; align-items: center !important; overflow-y: auto !important; position: relative !important;
-    }
+    [data-cognigy-webchat-root] [data-cognigy-webchat] .webchat-input-message-container { background-color: #FFFFFF !important; border-radius: 16px 0 0 16px !important; border-top: 1px solid #D1D1D1 !important; border-left: 1px solid #D1D1D1 !important; border-bottom: 1px solid #D1D1D1 !important; border-right: none !important; padding: 0 16px !important; flex: 1 !important; height: auto !important; min-height: 48px !important; max-height: 120px !important; display: flex !important; align-items: center !important; overflow-x: hidden !important; overflow-y: auto !important; position: relative !important; }
     [data-cognigy-webchat-root] [data-cognigy-webchat] .webchat-input-message-container::after,
     [data-cognigy-webchat-root] [data-cognigy-webchat] .webchat-input [class*="divider"],
     [data-cognigy-webchat-root] [data-cognigy-webchat] .webchat-input [class*="separator"] { display: none !important; }
-    [data-cognigy-webchat-root] [data-cognigy-webchat] .webchat-input-message-label { font-size: 16px !important; color: #999 !important; margin-left: 16px; position: absolute !important; top: 50% !important; transform: translateY(-50%) !important; }
+    [data-cognigy-webchat-root] [data-cognigy-webchat] .webchat-input-message-label { font-family: "Delivery", Arial, sans-serif !important; font-size: 16px !important; color: #999 !important; margin-left: 16px; position: absolute !important; top: 50% !important; transform: translateY(-50%) !important; }
     [data-cognigy-webchat-root] [data-cognigy-webchat].webchat .webchat-input-message-input,
-    [data-cognigy-webchat-root] [data-cognigy-webchat].webchat textarea.webchat-input-message-input {
-      font-size: 16px !important; color: #000 !important; background: transparent !important;
-      position: relative !important; top: auto !important; transform: none !important;
-      width: 100% !important; max-height: 96px !important; overflow-y: auto !important;
-      align-self: center !important; border: none !important; outline: none !important;
-      box-shadow: none !important; resize: none !important;
-    }
-    [data-cognigy-webchat-root] [data-cognigy-webchat].webchat .webchat-input-button-send {
-      background-color: #fff !important; border-radius: 0 16px 16px 0 !important;
-      border-top: 1px solid #D1D1D1 !important; border-right: 1px solid #D1D1D1 !important;
-      border-bottom: 1px solid #D1D1D1 !important; border-left: none !important;
-      width: 48px !important; min-height: 48px !important; min-width: 48px !important;
-      align-self: stretch !important; display: flex !important; align-items: center !important;
-      justify-content: center !important; margin-left: 0 !important;
-    }
+    [data-cognigy-webchat-root] [data-cognigy-webchat].webchat textarea.webchat-input-message-input { font-family: "Delivery", Arial, sans-serif !important; font-size: 16px !important; color: #000 !important; background: transparent !important; position: relative !important; top: auto !important; transform: none !important; width: 100% !important; max-height: 96px !important; overflow-y: auto !important; align-self: center !important; border: none !important; outline: none !important; box-shadow: none !important; resize: none !important; }
+    [data-cognigy-webchat-root] [data-cognigy-webchat].webchat .webchat-input-button-send { background-color: #FFFFFF !important; border-radius: 0 16px 16px 0 !important; border-top: 1px solid #D1D1D1 !important; border-right: 1px solid #D1D1D1 !important; border-bottom: 1px solid #D1D1D1 !important; border-left: none !important; width: 48px !important; min-height: 48px !important; min-width: 48px !important; align-self: stretch !important; display: flex !important; align-items: center !important; justify-content: center !important; margin-left: 0 !important; }
     [data-cognigy-webchat-root] [data-cognigy-webchat].webchat .webchat-input-button-send svg path { fill: #000 !important; }
 
-    /* Responsive */
     @media (max-width: 480px) {
       [data-cognigy-webchat-root] [data-cognigy-webchat].webchat { width: 100vw !important; max-width: 100vw !important; height: 100vh !important; max-height: 100vh !important; border-radius: 0 !important; }
-      .dash-tab { padding: 10px 12px; font-size: 11px; }
-      .quote-form { flex-direction: column; }
-      .top-nav__inner { gap: 0; }
-      .top-nav__link { padding: 0 10px; font-size: 12px; }
+      [data-cognigy-webchat-root] [data-cognigy-webchat].webchat .webchat-header-title { font-size: 13px !important; }
+      [data-cognigy-webchat-root] [data-cognigy-webchat].webchat .webchat-message-row.bot .chat-bubble { width: calc(100vw - 60px) !important; max-width: calc(100vw - 60px) !important; font-size: 12px !important; }
+      [data-cognigy-webchat-root] [data-cognigy-webchat].webchat .webchat-message-row.user .chat-bubble { font-size: 12px !important; }
+      [data-cognigy-webchat-root] [data-cognigy-webchat].webchat .webchat-input-message-input,
+      [data-cognigy-webchat-root] [data-cognigy-webchat].webchat textarea.webchat-input-message-input,
+      [data-cognigy-webchat-root] [data-cognigy-webchat] .webchat-input-message-label { font-size: 12px !important; }
+      [data-cognigy-webchat-root] [data-cognigy-webchat] .webchat-buttons-template-button *,
+      [data-cognigy-webchat-root] [data-cognigy-webchat] .webchat-quick-reply-template-button *,
+      [data-cognigy-webchat-root] [data-cognigy-webchat] .webchat-chip-conversation-ended * { font-size: 12px !important; }
+      [data-cognigy-webchat-root] [data-cognigy-webchat] .webchat-quick-reply-template-replies-container,
+      [data-cognigy-webchat-root] [data-cognigy-webchat] .webchat-buttons-template-replies-container { width: calc(100vw - 60px) !important; max-width: calc(100vw - 60px) !important; }
+    }
+    @media (min-width: 481px) and (max-width: 768px) {
+      [data-cognigy-webchat-root] [data-cognigy-webchat].webchat { width: 360px !important; max-width: 360px !important; height: 650px !important; max-height: 650px !important; }
+      [data-cognigy-webchat-root] [data-cognigy-webchat].webchat .webchat-message-row.bot .chat-bubble { width: 300px !important; max-width: 300px !important; }
+      [data-cognigy-webchat-root] [data-cognigy-webchat] .webchat-quick-reply-template-replies-container,
+      [data-cognigy-webchat-root] [data-cognigy-webchat] .webchat-buttons-template-replies-container { width: 300px !important; max-width: 300px !important; }
+      [data-cognigy-webchat-root] [data-cognigy-webchat].webchat .webchat-header-title { font-size: 15px !important; }
+      [data-cognigy-webchat-root] [data-cognigy-webchat].webchat .webchat-message-row.bot .chat-bubble,
+      [data-cognigy-webchat-root] [data-cognigy-webchat].webchat .webchat-message-row.user .chat-bubble { font-size: 13px !important; }
+      [data-cognigy-webchat-root] [data-cognigy-webchat].webchat .webchat-input-message-input,
+      [data-cognigy-webchat-root] [data-cognigy-webchat].webchat textarea.webchat-input-message-input,
+      [data-cognigy-webchat-root] [data-cognigy-webchat] .webchat-input-message-label { font-size: 13px !important; }
+      [data-cognigy-webchat-root] [data-cognigy-webchat] .webchat-buttons-template-button *,
+      [data-cognigy-webchat-root] [data-cognigy-webchat] .webchat-quick-reply-template-button *,
+      [data-cognigy-webchat-root] [data-cognigy-webchat] .webchat-chip-conversation-ended * { font-size: 13px !important; }
     }
     @media (min-width: 769px) {
       [data-cognigy-webchat-root] [data-cognigy-webchat].webchat { width: 400px !important; max-width: 400px !important; height: 75vh !important; max-height: 75vh !important; }
+      [data-cognigy-webchat-root] [data-cognigy-webchat].webchat .webchat-message-row.bot .chat-bubble { width: 340px !important; max-width: 340px !important; }
+      [data-cognigy-webchat-root] [data-cognigy-webchat] .webchat-quick-reply-template-replies-container,
+      [data-cognigy-webchat-root] [data-cognigy-webchat] .webchat-buttons-template-replies-container { width: 340px !important; max-width: 340px !important; }
       [data-cognigy-webchat-root] [data-cognigy-webchat].webchat .webchat-header-title { font-size: 18px !important; }
       [data-cognigy-webchat-root] [data-cognigy-webchat].webchat .webchat-message-row.bot .chat-bubble,
       [data-cognigy-webchat-root] [data-cognigy-webchat].webchat .webchat-message-row.user .chat-bubble { font-size: 16px !important; }
+      [data-cognigy-webchat-root] [data-cognigy-webchat].webchat .webchat-input-message-input,
+      [data-cognigy-webchat-root] [data-cognigy-webchat].webchat textarea.webchat-input-message-input,
+      [data-cognigy-webchat-root] [data-cognigy-webchat] .webchat-input-message-label { font-size: 16px !important; }
+      [data-cognigy-webchat-root] [data-cognigy-webchat] .webchat-buttons-template-button *,
+      [data-cognigy-webchat-root] [data-cognigy-webchat] .webchat-quick-reply-template-button *,
+      [data-cognigy-webchat-root] [data-cognigy-webchat] .webchat-chip-conversation-ended * { font-size: 15px !important; }
     }
+
     [data-cognigy-webchat-root], [data-cognigy-webchat-root]:focus, [data-cognigy-webchat-root]:focus-visible,
     [data-cognigy-webchat-root] [data-cognigy-webchat], [data-cognigy-webchat-root] [data-cognigy-webchat]:focus,
+    [data-cognigy-webchat-root] [data-cognigy-webchat]:focus-visible,
     [data-cognigy-webchat-root] *:focus, [data-cognigy-webchat-root] *:focus-visible { outline: none !important; box-shadow: none !important; }
+
+    [dir="rtl"] [data-cognigy-webchat-root] [data-cognigy-webchat].webchat .webchat-input { gap: 0 !important; }
+    [dir="rtl"] [data-cognigy-webchat-root] [data-cognigy-webchat].webchat .webchat-input .webchat-input-menu-form { gap: 0 !important; padding: 0 !important; margin: 0 !important; }
+    [dir="rtl"] [data-cognigy-webchat-root] [data-cognigy-webchat].webchat .webchat-input .webchat-input-button-send { border-radius: 16px 0 0 16px !important; border-top: 1px solid #D1D1D1 !important; border-left: 1px solid #D1D1D1 !important; border-bottom: 1px solid #D1D1D1 !important; border-right: none !important; margin: 0 !important; }
+    [dir="rtl"] [data-cognigy-webchat-root] [data-cognigy-webchat].webchat .webchat-input .webchat-input-menu-form .webchat-input-message-container { border-radius: 0 16px 16px 0 !important; border-top: 1px solid #D1D1D1 !important; border-right: 1px solid #D1D1D1 !important; border-bottom: 1px solid #D1D1D1 !important; border-left: none !important; }
+    [dir="rtl"] [data-cognigy-webchat-root] [data-cognigy-webchat].webchat .webchat-input .webchat-input-message-label { margin-left: 0 !important; margin-right: 16px !important; text-align: right !important; }
+    [dir="rtl"] [data-cognigy-webchat-root] [data-cognigy-webchat].webchat .webchat-input-message-input,
+    [dir="rtl"] [data-cognigy-webchat-root] [data-cognigy-webchat].webchat textarea.webchat-input-message-input { direction: rtl !important; text-align: right !important; }
   </style>
 </head>
 <body>
 
-  <!-- Demo badge -->
   <div class="demo-badge">DEMO — Cognigy Chatbot Integration Preview</div>
+  <button id="lang-toggle" onclick="toggleLanguage()">Switch to English</button>
 
-  <!-- Language toggle -->
-  <button id="lang-toggle" onclick="toggleLanguage()">Switch to Arabic</button>
-
-  <!-- ── Language detection ── -->
+  <!-- ── Language detection — Arabic default ── -->
   <script>
     (function () {
       var params = new URLSearchParams(window.location.search);
       var langParam = params.get('lang') || 'ar-AE';
-      var isArabic = langParam.toLowerCase() === 'ar' || langParam.toLowerCase() === 'ar-ae';
+      var isArabic  = langParam.toLowerCase() === 'ar' || langParam.toLowerCase() === 'ar-ae';
       document.documentElement.lang = isArabic ? 'ar-AE' : 'en-AE';
-      document.documentElement.dir = isArabic ? 'rtl' : 'ltr';
-      window.APP_LANGUAGE = isArabic ? 'ar' : 'en';
-      window.APP_LOCALE   = isArabic ? 'ar-AE' : 'en-AE';
-      window.APP_DIRECTION = isArabic ? 'rtl' : 'ltr';
+      document.documentElement.dir  = isArabic ? 'rtl'   : 'ltr';
+      window.APP_LANGUAGE  = isArabic ? 'ar'    : 'en';
+      window.APP_LOCALE    = isArabic ? 'ar-AE' : 'en-AE';
+      window.APP_DIRECTION = isArabic ? 'rtl'   : 'ltr';
     })();
   </script>
 
-  <!-- ══════════════════════════════════════════════════════
-       DHL PAGE CHROME
-  ════════════════════════════════════════════════════════ -->
-
-  <!-- Corporate bar -->
+  <!-- ════ DHL PAGE CHROME ════ -->
   <div class="corp-bar">
     <div class="corp-bar__inner">
       <div class="corp-bar__links">
@@ -271,247 +259,204 @@
         <a class="corp-bar__link" href="#">DHL Supply Chain</a>
       </div>
       <div class="corp-bar__links">
-        <a class="corp-bar__link" href="#">United Arab Emirates — English</a>
-        <a class="corp-bar__link" href="#">Help</a>
+        <a class="corp-bar__link" href="#">الإمارات العربية المتحدة — العربية</a>
+        <a class="corp-bar__link" href="#">مساعدة</a>
       </div>
     </div>
   </div>
 
-  <!-- Main header -->
   <div class="header">
     <div class="header__inner">
       <div class="header__logo">
-        <!-- DHL logo SVG (inline) -->
         <svg height="36" viewBox="0 0 284 65" xmlns="http://www.w3.org/2000/svg">
           <rect width="284" height="65" fill="#FFCC00"/>
-          <text x="18" y="48" font-family="Arial Black, Arial, sans-serif" font-weight="900" font-size="48" fill="#D40511" letter-spacing="-2">DHL</text>
-          <text x="130" y="36" font-family="Arial, sans-serif" font-weight="700" font-size="13" fill="#333">EXPRESS</text>
-          <text x="130" y="52" font-family="Arial, sans-serif" font-size="11" fill="#333">myDHL+</text>
+          <text x="18" y="48" font-family="Arial Black,Arial,sans-serif" font-weight="900" font-size="48" fill="#D40511" letter-spacing="-2">DHL</text>
+          <text x="130" y="36" font-family="Arial,sans-serif" font-weight="700" font-size="13" fill="#333">EXPRESS</text>
+          <text x="130" y="52" font-family="Arial,sans-serif" font-size="11" fill="#333">myDHL+</text>
         </svg>
       </div>
       <div class="header__right">
         <div class="header__search">
           <svg width="14" height="14" fill="none" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7" stroke="#999" stroke-width="2"/><path d="m16.5 16.5 4 4" stroke="#999" stroke-width="2" stroke-linecap="round"/></svg>
-          <input type="text" placeholder="Search..." />
+          <input type="text" placeholder="بحث..." />
         </div>
-        <button class="header__btn header__btn--login">Log In</button>
-        <button class="header__btn header__btn--register">Register</button>
+        <button class="header__btn header__btn--login">تسجيل الدخول</button>
+        <button class="header__btn header__btn--register">تسجيل</button>
       </div>
     </div>
   </div>
 
-  <!-- Top navigation -->
   <nav class="top-nav">
     <div class="top-nav__inner">
       <div class="top-nav__item top-nav__item--active">
-        <a class="top-nav__link" href="#">Ship <span class="caret">▾</span></a>
+        <a class="top-nav__link" href="#">الشحن <span class="caret">▾</span></a>
         <div class="dropdown">
-          <a class="dropdown__link" href="#">Get a Rate &amp; Time Quote</a>
-          <a class="dropdown__link" href="#">Create a Shipment</a>
-          <a class="dropdown__link" href="#">Schedule a Pickup</a>
-          <a class="dropdown__link" href="#">Open a DHL Account</a>
+          <a class="dropdown__link" href="#">احصل على عرض سعر</a>
+          <a class="dropdown__link" href="#">إنشاء شحنة</a>
+          <a class="dropdown__link" href="#">جدولة استلام</a>
         </div>
       </div>
       <div class="top-nav__item">
-        <a class="top-nav__link" href="#">Track <span class="caret">▾</span></a>
+        <a class="top-nav__link" href="#">التتبع <span class="caret">▾</span></a>
         <div class="dropdown">
-          <a class="dropdown__link" href="#">Track Shipments</a>
-          <a class="dropdown__link" href="#">Track by Reference</a>
+          <a class="dropdown__link" href="#">تتبع الشحنات</a>
+          <a class="dropdown__link" href="#">تتبع بالمرجع</a>
         </div>
       </div>
       <div class="top-nav__item">
-        <a class="top-nav__link" href="#">Find a Location <span class="caret">▾</span></a>
+        <a class="top-nav__link" href="#">البحث عن موقع <span class="caret">▾</span></a>
         <div class="dropdown">
-          <a class="dropdown__link" href="#">Find DHL ServicePoint</a>
-          <a class="dropdown__link" href="#">Find Drop-off Point</a>
+          <a class="dropdown__link" href="#">موقع خدمة DHL</a>
         </div>
       </div>
       <div class="top-nav__item">
-        <a class="top-nav__link" href="#">Manage Delivery <span class="caret">▾</span></a>
+        <a class="top-nav__link" href="#">إدارة التسليم <span class="caret">▾</span></a>
         <div class="dropdown">
-          <a class="dropdown__link" href="#">On Demand Delivery</a>
-          <a class="dropdown__link" href="#">Delivery Services</a>
+          <a class="dropdown__link" href="#">تسليم حسب الطلب</a>
         </div>
-      </div>
-      <div class="top-nav__item">
-        <a class="top-nav__link" href="#">Customs <span class="caret">▾</span></a>
-        <div class="dropdown">
-          <a class="dropdown__link" href="#">Customs Clearance</a>
-          <a class="dropdown__link" href="#">Prohibited Items</a>
-        </div>
-      </div>
-    </div>
-  </nav>
-
-  <!-- Hero + Dashboard tabs -->
-  <div class="hero">
-    <div class="hero__inner">
-      <div class="hero__headline">Welcome to myDHL+</div>
-      <div class="hero__sub">Ship smarter. Track easier. Manage everything in one place.</div>
-      <div class="dash-tabs" role="tablist">
-        <button class="dash-tab is-active" role="tab" aria-selected="true">Get a Quote</button>
-        <button class="dash-tab" role="tab">Create a Shipment</button>
-        <button class="dash-tab" role="tab">Track</button>
-        <button class="dash-tab" role="tab">Schedule a Pickup</button>
-        <button class="dash-tab" role="tab">Find a Location</button>
       </div>
     </div>
   </div>
 
-  <!-- Dashboard panel -->
+  <div class="hero">
+    <div class="hero__inner">
+      <div class="hero__headline">مرحباً بك في myDHL+</div>
+      <div class="hero__sub">شحن أذكى. تتبع أسهل. إدارة كل شيء في مكان واحد.</div>
+      <div class="dash-tabs" role="tablist">
+        <button class="dash-tab is-active" role="tab">احصل على عرض سعر</button>
+        <button class="dash-tab" role="tab">إنشاء شحنة</button>
+        <button class="dash-tab" role="tab">تتبع</button>
+        <button class="dash-tab" role="tab">جدولة استلام</button>
+        <button class="dash-tab" role="tab">البحث عن موقع</button>
+      </div>
+    </div>
+  </div>
+
   <div class="dash-panel">
     <div class="dash-panel__inner">
       <form class="quote-form" onsubmit="return false;">
         <div class="quote-form__group">
-          <label class="quote-form__label">Ship From</label>
+          <label class="quote-form__label">شحن من</label>
           <div class="quote-form__field-wrap">
             <span class="quote-form__flag">🇦🇪</span>
-            <input class="quote-form__input" type="text" placeholder="United Arab Emirates" />
+            <input class="quote-form__input" type="text" placeholder="الإمارات العربية المتحدة" />
           </div>
         </div>
         <div class="quote-form__arrow">
           <svg width="28" height="28" viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 6l6 6-6 6" stroke="#FFCC00" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
         </div>
         <div class="quote-form__group">
-          <label class="quote-form__label">Ship To</label>
+          <label class="quote-form__label">شحن إلى</label>
           <div class="quote-form__field-wrap">
             <span class="quote-form__flag">🌍</span>
-            <input class="quote-form__input" type="text" placeholder="Destination country" />
+            <input class="quote-form__input" type="text" placeholder="الدولة المقصودة" />
           </div>
         </div>
-        <button class="quote-form__btn" type="submit">Next →</button>
+        <button class="quote-form__btn" type="submit">التالي ←</button>
       </form>
-      <div class="quote-form__hint">Need an account? <a href="#" style="color:#0064A7;font-weight:600;">Open a DHL Account</a> to access exclusive rates.</div>
+      <div class="quote-form__hint">تحتاج إلى حساب؟ <a href="#" style="color:#0064A7;font-weight:600;">افتح حساب DHL</a> للوصول إلى أسعار حصرية.</div>
     </div>
   </div>
 
-  <!-- Quick actions -->
   <div class="quick-actions">
     <div class="quick-actions__inner">
       <div class="qa-item">
-        <div class="qa-item__icon">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" stroke="#333" stroke-width="2"/></svg>
-        </div>
-        <div><div style="font-weight:600;margin-bottom:2px;">Track a Shipment</div><a href="#">Enter tracking number →</a></div>
+        <div class="qa-item__icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><circle cx="11" cy="11" r="7" stroke="#333" stroke-width="2"/><path d="m16.5 16.5 4 4" stroke="#333" stroke-width="2" stroke-linecap="round"/></svg></div>
+        <div><div style="font-weight:600;margin-bottom:2px;">تتبع شحنة</div><a href="#">أدخل رقم التتبع ←</a></div>
       </div>
       <div class="qa-item">
-        <div class="qa-item__icon">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><rect x="3" y="3" width="18" height="18" rx="2" stroke="#333" stroke-width="2"/><path d="M3 9h18" stroke="#333" stroke-width="2"/></svg>
-        </div>
-        <div><div style="font-weight:600;margin-bottom:2px;">Schedule a Pickup</div><a href="#">Book a courier →</a></div>
+        <div class="qa-item__icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><rect x="3" y="3" width="18" height="18" rx="2" stroke="#333" stroke-width="2"/><path d="M3 9h18" stroke="#333" stroke-width="2"/></svg></div>
+        <div><div style="font-weight:600;margin-bottom:2px;">جدولة استلام</div><a href="#">احجز مندوباً ←</a></div>
       </div>
       <div class="qa-item">
-        <div class="qa-item__icon">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z" stroke="#333" stroke-width="2"/></svg>
-        </div>
-        <div><div style="font-weight:600;margin-bottom:2px;">Find a ServicePoint</div><a href="#">Locate near you →</a></div>
-      </div>
-      <div class="qa-item">
-        <div class="qa-item__icon">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" stroke="#333" stroke-width="2"/><polyline points="14 2 14 8 20 8" stroke="#333" stroke-width="2"/></svg>
-        </div>
-        <div><div style="font-weight:600;margin-bottom:2px;">Customs Information</div><a href="#">Duties &amp; taxes →</a></div>
+        <div class="qa-item__icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z" stroke="#333" stroke-width="2"/></svg></div>
+        <div><div style="font-weight:600;margin-bottom:2px;">البحث عن موقع</div><a href="#">الموقع القريب منك ←</a></div>
       </div>
     </div>
   </div>
 
-  <!-- Recent activity placeholder -->
   <div class="section">
-    <div class="section__title">Recent Shipments</div>
+    <div class="section__title">الشحنات الأخيرة</div>
     <div class="placeholder-card">
-      <svg width="48" height="48" viewBox="0 0 24 24" fill="none" style="margin:0 auto 12px;display:block;opacity:.3"><path d="M20 7H4a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2z" stroke="#333" stroke-width="1.5"/><path d="M16 3H8L6 7h12l-2-4z" stroke="#333" stroke-width="1.5"/></svg>
-      No recent shipments. <a href="#" style="color:#0064A7;font-weight:600;">Create your first shipment</a>
+      لا توجد شحنات حديثة. <a href="#" style="color:#0064A7;font-weight:600;">أنشئ أول شحنة لك</a>
     </div>
   </div>
 
-  <!-- Footer -->
   <footer class="footer">
     <div class="footer__inner">
-      <div class="footer__col">
-        <h4>Ship</h4>
-        <a href="#">Get a Rate &amp; Quote</a>
-        <a href="#">Create a Shipment</a>
-        <a href="#">Schedule a Pickup</a>
-        <a href="#">Open an Account</a>
-      </div>
-      <div class="footer__col">
-        <h4>Track</h4>
-        <a href="#">Track by Number</a>
-        <a href="#">Track by Reference</a>
-        <a href="#">Proof of Delivery</a>
-      </div>
-      <div class="footer__col">
-        <h4>Find</h4>
-        <a href="#">ServicePoint Locator</a>
-        <a href="#">Drop-off Points</a>
-      </div>
-      <div class="footer__col">
-        <h4>Support</h4>
-        <a href="#">Contact Us</a>
-        <a href="#">FAQs</a>
-        <a href="#">Chat with Us</a>
-      </div>
+      <div class="footer__col"><h4>الشحن</h4><a href="#">احصل على عرض سعر</a><a href="#">إنشاء شحنة</a><a href="#">جدولة استلام</a></div>
+      <div class="footer__col"><h4>التتبع</h4><a href="#">تتبع برقم</a><a href="#">تتبع بالمرجع</a></div>
+      <div class="footer__col"><h4>الدعم</h4><a href="#">اتصل بنا</a><a href="#">الأسئلة الشائعة</a></div>
     </div>
     <div class="footer__bottom">
-      <span>© 2024 DHL International GmbH. All rights reserved.</span>
-      <span>
-        <a href="#" style="color:#aaa;margin-right:12px;">Privacy Policy</a>
-        <a href="#" style="color:#aaa;margin-right:12px;">Terms of Use</a>
-        <a href="#" style="color:#aaa;">Cookie Policy</a>
-      </span>
+      <span>© 2024 DHL International GmbH. جميع الحقوق محفوظة.</span>
     </div>
   </footer>
 
-  <!-- ══════════════════════════════════════════════════════
-       COGNIGY WEBCHAT — embedded chatbot
-  ════════════════════════════════════════════════════════ -->
+  <!-- ════ COGNIGY WEBCHAT ════ -->
   <script>
     const DELAY = 500;
+
     const setIndicatorVisibility = (visible) => {
       const el = document.querySelector("[data-cognigy-webchat-root] .webchat-typing-indicator");
       if (el) el.style.visibility = visible ? "visible" : "hidden";
     };
+
     const ENDED_KEY = 'cognigy_conv_ended';
 
+    function ssGet(k)    { try { return sessionStorage.getItem(k);    } catch(e) { return null; } }
+    function ssSet(k, v) { try { sessionStorage.setItem(k, v);        } catch(e) {} }
+    function ssDel(k)    { try { sessionStorage.removeItem(k);        } catch(e) {} }
+
     function cleanupEndedState() {
-      sessionStorage.removeItem(ENDED_KEY);
+      ssDel(ENDED_KEY);
       const s = document.getElementById("cognigy-chat-ended-style");
       if (s) s.remove();
     }
 
     function disableInput() {
-      sessionStorage.setItem(ENDED_KEY, '1');
+      ssSet(ENDED_KEY, '1');
+
       const isArabic = document.documentElement.dir === "rtl";
-      const endedText  = isArabic ? "انتهت هذه المحادثة." : "This conversation has ended.";
-      const closeTxt   = isArabic ? "إغلاق" : "Close";
+      const endedText    = isArabic ? "انتهت هذه المحادثة." : "This conversation has ended.";
+      const closeBtnText = isArabic ? "إغلاق" : "Close";
+
       const old = document.getElementById("cognigy-chat-ended-style");
       if (old) old.remove();
-      const st = document.createElement("style");
-      st.id = "cognigy-chat-ended-style";
-      st.textContent = `
-        .webchat-input-message-input { background-color:#e0e0e0!important;cursor:default!important;color:#999!important; }
-        .webchat-input-button-send   { opacity:.4!important;cursor:default!important;pointer-events:none!important; }
-        .webchat-input-persistent-menu-button { opacity:.4!important;cursor:default!important;pointer-events:none!important; }
-        .webchat-input-persistent-menu-item-container { display:none!important; }
+
+      const endedStyle = document.createElement("style");
+      endedStyle.id = "cognigy-chat-ended-style";
+      endedStyle.textContent = `
+        .webchat-input-message-input { background-color: #e0e0e0 !important; cursor: default !important; color: #999 !important; }
+        .webchat-input-button-send   { opacity: 0.4 !important; cursor: default !important; pointer-events: none !important; }
+        .webchat-input-persistent-menu-button { opacity: 0.4 !important; cursor: default !important; pointer-events: none !important; }
+        .webchat-input-persistent-menu-item-container { display: none !important; }
       `;
-      document.head.appendChild(st);
-      const input   = document.querySelector(".webchat-input-message-input");
-      const label   = document.querySelector(".webchat-input-message-label");
-      const sendBtn = document.querySelector(".webchat-input-button-send");
-      const menuBtn = document.querySelector(".webchat-input-persistent-menu-button");
+      document.head.appendChild(endedStyle);
+
+      const input    = document.querySelector(".webchat-input-message-input");
+      const label    = document.querySelector(".webchat-input-message-label");
+      const sendBtn  = document.querySelector(".webchat-input-button-send");
+      const menuBtn  = document.querySelector(".webchat-input-persistent-menu-button");
       const menuPanel = document.querySelector(".webchat-input-persistent-menu-item-container");
-      if (label) label.textContent = endedText;
-      if (input) input.disabled = true;
-      if (menuBtn) menuBtn.disabled = true;
+
+      if (label)    label.textContent = endedText;
+      if (input)    input.disabled    = true;
+      if (menuBtn)  menuBtn.disabled  = true;
       if (menuPanel) menuPanel.style.display = "none";
+
       if (sendBtn && !document.querySelector(".cognigy-ended-close-btn")) {
         sendBtn.disabled = true;
-        const cb = document.createElement("button");
-        cb.className = "cognigy-ended-close-btn";
-        cb.textContent = closeTxt;
-        cb.onclick = () => { cleanupEndedState(); window.cognigyWebchat.endSession(); window.cognigyWebchat.close(); };
-        cb.style.cssText = "margin-inline-start:8px;padding:6px 14px;background-color:#c00;color:#fff;border:none;border-radius:4px;cursor:pointer;font-size:14px;";
-        sendBtn.parentElement.appendChild(cb);
+        const closeBtn = document.createElement("button");
+        closeBtn.className = "cognigy-ended-close-btn";
+        closeBtn.textContent = closeBtnText;
+        closeBtn.onclick = () => {
+          cleanupEndedState();
+          window.cognigyWebchat.endSession();
+          window.cognigyWebchat.close();
+        };
+        closeBtn.style.cssText = "margin-inline-start:8px;padding:6px 14px;background-color:#c00;color:white;border:none;border-radius:4px;cursor:pointer;font-size:14px;";
+        sendBtn.parentElement.appendChild(closeBtn);
       }
     }
 
@@ -531,11 +476,21 @@
     ];
 
     const englishSettings = {
-      homeScreen: { enabled: false },
+      homeScreen: {
+        enabled: false,
+        welcomeText: "Welcome! How can we help you?",
+        startConversationButtonText: "Start conversation",
+        previousConversations: { enabled: true, buttonText: "Previous conversations", title: "Previous conversations", startNewConversationButtonText: "Start new conversation" }
+      },
       behavior: { inputPlaceholder: "Type something here...", AIAgentNoticeText: "You are now talking to an AI agent." }
     };
     const arabicSettings = {
-      homeScreen: { enabled: false },
+      homeScreen: {
+        enabled: false,
+        welcomeText: "مرحباً! كيف يمكننا مساعدتك؟",
+        startConversationButtonText: "ابدأ المحادثة",
+        previousConversations: { enabled: true, buttonText: "المحادثات السابقة", title: "المحادثات السابقة", startNewConversationButtonText: "ابدأ محادثة جديدة" }
+      },
       behavior: { inputPlaceholder: "اكتب رسالتك هنا...", AIAgentNoticeText: "أنت تتحدث الآن مع وكيل ذكاء اصطناعي." }
     };
     const chatUiEnglish = {
@@ -549,12 +504,13 @@
       customTranslations: { conversations_options: "خيارات المحادثات", delete_conversation: "حذف المحادثة", delete_conversation_confirmation: "هل أنت متأكد من أنك تريد حذف هذه المحادثة؟ لا يمكن التراجع عن هذا الإجراء.", delete: "حذف", delete_anyway: "الحذف على أي حال", cancel: "إلغاء", ariaLabels: { chatOptions: "خيارات المحادثة", sendMessage: "إرسال الرسالة", thumbsUp: "تقييم إيجابي", thumbsDown: "تقييم سلبي" } }
     };
 
-    const useArabic = (document.documentElement.getAttribute("lang") || "").toLowerCase().startsWith("ar") || document.documentElement.getAttribute("dir") === "rtl";
+    const useArabic = document.documentElement.getAttribute("lang").toLowerCase().startsWith("ar") || document.documentElement.getAttribute("dir") === "rtl";
 
     const script = document.createElement("script");
     script.src = "https://github.com/Cognigy/Webchat/releases/latest/download/webchat.js";
+
     script.onload = function () {
-      function updatePreviewText() {
+      function updateChatPreviewText() {
         const p = document.querySelector(".webchat-unread-message-preview-text");
         if (p) p.textContent = useArabic ? "لنبدأ المحادثة" : "Chat with me";
       }
@@ -569,6 +525,7 @@
               enablePersistentMenu: true,
               persistentMenu: { title: useArabic ? "الإجراءات" : "Quick Actions", menuItems: useArabic ? arabicMenuItems : englishMenuItems }
             },
+            getStartedData: { language: useArabic ? "ar-AR" : "en-AR", locale: useArabic ? "ar-AR" : "en-AR", direction: useArabic ? "rtl" : "ltr" },
             startBehavior: {
               startBehavior: "injection",
               getStartedPayload: "Hi",
@@ -585,15 +542,19 @@
         }
       ).then((webchat) => {
         window.cognigyWebchat = webchat;
-        updatePreviewText();
-        new MutationObserver(() => { updatePreviewText(); }).observe(document.body, { childList: true, subtree: true });
 
-        /* Settings icon replacement */
+        updateChatPreviewText();
+        const previewObs = new MutationObserver(() => {
+          const p = document.querySelector(".webchat-unread-message-preview-text");
+          if (p) { p.textContent = useArabic ? "لنبدأ المحادثة" : "Chat with me"; previewObs.disconnect(); }
+        });
+        previewObs.observe(document.body, { childList: true, subtree: true });
+
         const scopedObs = new MutationObserver(() => {
           const btn = document.querySelector('[data-header-menu-button="true"]');
           if (btn && btn.dataset.cogReplaced !== "true") {
             btn.dataset.cogReplaced = "true";
-            btn.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" viewBox="0 0 24 24"><path fill="#1A1A1A" d="M12 15.5A3.5 3.5 0 0 1 8.5 12 3.5 3.5 0 0 1 12 8.5a3.5 3.5 0 0 1 3.5 3.5 3.5 3.5 0 0 1-3.5 3.5m7.43-2.92c.04-.34.07-.69.07-1.08s-.03-.74-.07-1.08l2.32-1.82c.21-.16.27-.46.13-.7l-2.2-3.81c-.13-.25-.42-.33-.67-.25l-2.74 1.1c-.57-.44-1.18-.81-1.86-1.08L14 2.42C13.96 2.18 13.74 2 13.5 2h-4.4c-.24 0-.46.18-.5.42l-.41 2.44c-.68.27-1.3.64-1.86 1.08L3.59 4.84c-.25-.08-.54 0-.67.25L.72 8.9c-.14.24-.08.54.13.7l2.32 1.82C3.13 11.76 3.1 12.1 3.1 12.5s.03.74.07 1.08L.85 15.4c-.21.16-.27.46-.13.7l2.2 3.81c.13.25.42.33.67.25l2.74-1.1c.57.44 1.18.81 1.86 1.08l.41 2.44c.04.24.26.42.5.42h4.4c.24 0 .46-.18.5-.42l.41-2.44c.68-.27 1.3-.64 1.86-1.08l2.74 1.1c.25.08.54 0 .67-.25l2.2-3.81c.14-.24.08-.54-.13-.7l-2.32-1.82Z"/></svg>`;
+            btn.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" viewBox="0 0 24 24" aria-hidden="true"><path fill="#1A1A1A" d="M12 15.5A3.5 3.5 0 0 1 8.5 12 3.5 3.5 0 0 1 12 8.5a3.5 3.5 0 0 1 3.5 3.5 3.5 3.5 0 0 1-3.5 3.5m7.43-2.92c.04-.34.07-.69.07-1.08s-.03-.74-.07-1.08l2.32-1.82c.21-.16.27-.46.13-.7l-2.2-3.81c-.13-.25-.42-.33-.67-.25l-2.74 1.1c-.57-.44-1.18-.81-1.86-1.08L14 2.42C13.96 2.18 13.74 2 13.5 2h-4.4c-.24 0-.46.18-.5.42l-.41 2.44c-.68.27-1.3.64-1.86 1.08L3.59 4.84c-.25-.08-.54 0-.67.25L.72 8.9c-.14.24-.08.54.13.7l2.32 1.82C3.13 11.76 3.1 12.1 3.1 12.5s.03.74.07 1.08L.85 15.4c-.21.16-.27.46-.13.7l2.2 3.81c.13.25.42.33.67.25l2.74-1.1c.57.44 1.18.81 1.86 1.08l.41 2.44c.04.24.26.42.5.42h4.4c.24 0 .46-.18.5-.42l.41-2.44c.68-.27 1.3-.64 1.86-1.08l2.74 1.1c.25.08.54 0 .67-.25l2.2-3.81c.14-.24.08-.54-.13-.7l-2.32-1.82Z"/></svg>`;
           }
         });
         new MutationObserver(() => {
@@ -601,11 +562,10 @@
           if (hdr) scopedObs.observe(hdr, { childList: true, subtree: true });
         }).observe(document.body, { childList: true, subtree: true });
 
-        /* RTL pill fix */
         if (useArabic) {
-          const B = "1px solid #D1D1D1";
+          const BORDER = "1px solid #D1D1D1";
           const set = (el, p, v) => el && el.style.setProperty(p, v, "important");
-          function applyRtl() {
+          function applyRtlPill() {
             const send = document.querySelector(".webchat-input-button-send");
             const box  = document.querySelector(".webchat-input-message-container");
             if (!send || !box) return;
@@ -614,90 +574,117 @@
             set(bar, "gap", "0"); set(form, "gap", "0"); set(form, "margin", "0");
             set(send, "margin", "0"); set(box, "margin", "0");
             if (form && form.contains(send) && form.contains(box)) {
-              set(form, "border", B); set(form, "border-radius", "16px"); set(form, "overflow", "hidden");
-              set(form, "background-color", "#FFFFFF"); set(form, "padding", "0");
+              set(form, "border", BORDER); set(form, "border-radius", "16px");
+              set(form, "overflow", "hidden"); set(form, "background-color", "#FFFFFF"); set(form, "padding", "0");
               set(box, "border", "none"); set(box, "border-radius", "0");
               set(send, "border", "none"); set(send, "border-radius", "0");
             } else {
-              set(send, "border-radius", "16px 0 0 16px"); set(send, "border-top", B); set(send, "border-left", B); set(send, "border-bottom", B); set(send, "border-right", "none");
-              set(box,  "border-radius", "0 16px 16px 0"); set(box,  "border-top", B); set(box,  "border-right", B); set(box,  "border-bottom", B); set(box,  "border-left", "none");
+              set(send, "border-radius", "16px 0 0 16px"); set(send, "border-top", BORDER);
+              set(send, "border-left", BORDER); set(send, "border-bottom", BORDER); set(send, "border-right", "none");
+              set(box,  "border-radius", "0 16px 16px 0"); set(box, "border-top", BORDER);
+              set(box,  "border-right", BORDER); set(box, "border-bottom", BORDER); set(box, "border-left", "none");
               set(send, "margin-right", "-1px"); set(send, "position", "relative"); set(send, "z-index", "1");
             }
           }
-          applyRtl();
-          new MutationObserver(applyRtl).observe(document.body, { childList: true, subtree: true });
+          applyRtlPill();
+          new MutationObserver(applyRtlPill).observe(document.body, { childList: true, subtree: true });
         }
 
-        /* Idle timeout — 5 min */
-        const IDLE_MS = 5 * 60 * 1000;
-        let idleTimer = null, chatOpen = true, idleEnded = false, convEnded = false;
+        const IDLE_CLOSE_MS = 5 * 60 * 1000;
+        let idleCloseTimer = null;
+        let isChatOpen     = false;
+        let idleEnded      = false;
 
-        function injectBotMsg(text) {
-          let log = document.querySelector('.webchat-chat-history') || document.querySelector('[class*="chat-history"]');
-          if (!log) { const r = document.querySelector('.webchat-message-row'); if (r) log = r.parentElement; }
-          if (!log) return;
+        function injectBotMessage(text) {
+          let chatLog = document.querySelector('.webchat-chat-history');
+          if (!chatLog) { const r = document.querySelector('.webchat-message-row'); if (r) chatLog = r.parentElement; }
+          if (!chatLog) chatLog = document.querySelector('[class*="chat-history"]') || document.querySelector('[class*="message-list"]');
+          if (!chatLog) { console.warn('[IdleTimeout] chat log container not found'); return; }
           const row = document.createElement('div');
           row.className = 'webchat-message-row bot';
           row.style.cssText = 'display:flex;flex-direction:column;align-items:flex-start;margin:8px 0;padding:0 16px;';
-          const bbl = document.createElement('div');
-          bbl.className = 'chat-bubble';
-          bbl.style.cssText = 'background:#fff;border:.5px solid rgba(0,0,0,.29);border-radius:0 12px 12px 12px;padding:12px 16px;max-width:340px;font-size:16px;color:#000;font-family:Arial,sans-serif;';
-          bbl.textContent = text;
-          row.appendChild(bbl); log.appendChild(row); bbl.scrollIntoView({ behavior: 'smooth', block: 'end' });
+          const bubble = document.createElement('div');
+          bubble.className = 'chat-bubble';
+          bubble.style.cssText = 'background-color:#fff;border:0.5px solid rgba(0,0,0,0.29);border-radius:0 12px 12px 12px;padding:12px 16px;max-width:340px;font-size:16px;color:#000;font-family:"Delivery",Arial,sans-serif;';
+          bubble.textContent = text;
+          row.appendChild(bubble); chatLog.appendChild(row); bubble.scrollIntoView({ behavior: 'smooth', block: 'end' });
         }
-        function resetIdle() { if (!chatOpen || idleEnded) return; clearTimeout(idleTimer); idleTimer = setTimeout(closeIdle, IDLE_MS); }
-        function closeIdle() {
-          if (idleEnded) return; idleEnded = true; convEnded = true; clearTimeout(idleTimer);
-          injectBotMsg(useArabic ? 'نظراً لعدم النشاط، سيتم الآن إغلاق جلسة المحادثة هذه. شكراً لتواصلك مع DHL Express.' : 'Due to inactivity, this chat session will now be closed. Thank you for contacting DHL Express.');
+        function clearIdleTimers()  { clearTimeout(idleCloseTimer); idleCloseTimer = null; }
+        function resetIdleTimers()  { if (!isChatOpen || idleEnded) return; clearIdleTimers(); idleCloseTimer = setTimeout(closeIdleSession, IDLE_CLOSE_MS); }
+        function closeIdleSession() {
+          if (idleEnded) return;
+          idleEnded = true; conversationEnded = true; clearIdleTimers();
+          injectBotMessage(useArabic
+            ? 'نظراً لعدم النشاط، سيتم الآن إغلاق جلسة المحادثة هذه. شكراً لتواصلك مع DHL Express. يسعدنا خدمتك في أي وقت.'
+            : 'Due to inactivity, this chat session will now be closed. Thank you for contacting DHL Express. You are welcome to start a new conversation anytime you need assistance.');
           setTimeout(disableInput, 500);
         }
 
-        if (sessionStorage.getItem(ENDED_KEY)) { convEnded = true; idleEnded = true; setTimeout(disableInput, 400); }
-        else { resetIdle(); }
+        let conversationEnded = false;
+
+        isChatOpen = true;
+        if (ssGet(ENDED_KEY)) {
+          conversationEnded = true; idleEnded = true; setTimeout(disableInput, 400);
+        } else {
+          resetIdleTimers();
+        }
 
         webchat.registerAnalyticsService((event) => {
+          console.log("[Cognigy Event]", event);
+
           if (event?.payload?.data?.showTypingIndicator) setTimeout(setIndicatorVisibility, DELAY, true);
-          if (event?.payload?.data?.hideTypingIndicator) setTimeout(setIndicatorVisibility, DELAY, false);
+          else if (event?.payload?.data?.hideTypingIndicator) setTimeout(setIndicatorVisibility, DELAY, false);
+
           if (event.type === "webchat/open") {
-            chatOpen = true;
-            if (convEnded || sessionStorage.getItem(ENDED_KEY)) { convEnded = true; idleEnded = true; setTimeout(disableInput, 400); }
-            else { cleanupEndedState(); idleEnded = false; resetIdle(); }
-          }
-          if (event.type === "webchat/outgoing-message" && chatOpen && !idleEnded) resetIdle();
-          if (event.type === "webchat/incoming-message") {
-            const t = event?.payload?.text;
-            if (t && (t.includes("You can now close the chat widget") || t.includes("يمكنك الآن إغلاق نافذة المحادثة"))) {
-              convEnded = true; idleEnded = true; clearTimeout(idleTimer); disableInput();
+            isChatOpen = true;
+            if (conversationEnded || ssGet(ENDED_KEY)) {
+              conversationEnded = true; idleEnded = true; setTimeout(disableInput, 400);
+            } else {
+              cleanupEndedState(); idleEnded = false; resetIdleTimers();
             }
           }
+
+          if (event.type === "webchat/outgoing-message" && isChatOpen && !idleEnded) resetIdleTimers();
+
+          if (event.type === "webchat/incoming-message") {
+            const text = event?.payload?.text;
+            if (text && (text.includes("You can now close the chat widget") || text.includes("يمكنك الآن إغلاق نافذة المحادثة"))) {
+              conversationEnded = true; idleEnded = true; clearIdleTimers(); disableInput();
+            }
+          }
+
           if (event.type === "webchat/close") {
-            chatOpen = false; clearTimeout(idleTimer);
-            if (convEnded) { cleanupEndedState(); window.cognigyWebchat.endSession(); convEnded = false; idleEnded = false; }
+            isChatOpen = false; clearIdleTimers();
+            if (conversationEnded) {
+              cleanupEndedState();
+              window.cognigyWebchat.endSession();
+              conversationEnded = false; idleEnded = false;
+            }
           }
         });
       });
     };
+
     document.body.appendChild(script);
   </script>
 
-  <!-- Tab switching (visual only) -->
   <script>
     document.querySelectorAll('.dash-tab').forEach(tab => {
-      tab.addEventListener('click', function() {
+      tab.addEventListener('click', function () {
         document.querySelectorAll('.dash-tab').forEach(t => t.classList.remove('is-active'));
         this.classList.add('is-active');
       });
     });
 
-    /* Language toggle */
     function toggleLanguage() {
-      const p = new URLSearchParams(window.location.search);
-      const cur = (p.get('lang') || 'en-AE').toLowerCase();
+      const p   = new URLSearchParams(window.location.search);
+      const cur = (p.get('lang') || 'ar-AE').toLowerCase();
       p.set('lang', cur.startsWith('ar') ? 'en-AE' : 'ar-AE');
       if (window.cognigyWebchat) window.cognigyWebchat.endSession();
       setTimeout(() => { window.location.search = p.toString(); }, 300);
     }
-    const isAr = (new URLSearchParams(window.location.search).get('lang') || 'en-AE').toLowerCase().startsWith('ar');
+
+    const isAr = !(new URLSearchParams(window.location.search).get('lang') || 'ar-AE').toLowerCase().startsWith('en');
     document.getElementById('lang-toggle').textContent = isAr ? 'Switch to English' : 'Switch to Arabic';
   </script>
 </body>
