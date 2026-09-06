@@ -1,0 +1,16 @@
+{
+  "files": {
+    "main.css": "/dhl-demo-web/ae/ar/static/css/main.f855e6bc.css",
+    "main.js": "/dhl-demo-web/ae/ar/static/js/main.728e6c7e.js",
+    "static/js/453.6113d422.chunk.js": "/dhl-demo-web/ae/ar/static/js/453.6113d422.chunk.js",
+    "static/media/12975.jpg": "/dhl-demo-web/ae/ar/static/media/12975.f72a91cff9ca4d24e2b2.jpg",
+    "index.html": "/dhl-demo-web/ae/ar/index.html",
+    "main.f855e6bc.css.map": "/dhl-demo-web/ae/ar/static/css/main.f855e6bc.css.map",
+    "main.728e6c7e.js.map": "/dhl-demo-web/ae/ar/static/js/main.728e6c7e.js.map",
+    "453.6113d422.chunk.js.map": "/dhl-demo-web/ae/ar/static/js/453.6113d422.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.f855e6bc.css",
+    "static/js/main.728e6c7e.js"
+  ]
+}
